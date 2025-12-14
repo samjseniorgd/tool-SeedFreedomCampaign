@@ -26,7 +26,7 @@
         }
         
         .column1 {
-            width: 5%;
+            width: 2.5%;
             background-color: #ffffff;
             font-size: 14px; /* Side footer font size */
             color: #2e2626;
@@ -40,7 +40,7 @@
         }
         
         .column2 {
-            width: 65%;
+            width: 67.5%;
             background-color: #2e2626;
         }
         
@@ -167,7 +167,7 @@
         
         .type-input::placeholder {
             color: #999;
-            font-style: none;
+            /* font-style: italic; */ /* Italics removed */
         }
         
         .type-input:focus {
@@ -211,31 +211,31 @@
             border: 2px solid #2e2626;
             border-radius: 12.5px;
             font-family: 'New Spirit', sans-serif;
-            font-size: 20px;
             color: #2e2626;
-            padding: 15px 0;
             cursor: pointer;
             transition: all 0.2s ease;
-            text-align: center;
-            text-wrap: pretty;
-            hanging-punctuation: first last;
             flex: 1; /* Takes width of 1 button (matches last button width) */
             min-height: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0; /* Remove padding, center SVG */
         }
         
         .download-button:hover {
             background-color: #2e2626;
-            color: #ffffff;
+        }
+        
+        .download-button:hover .download-icon {
+            filter: brightness(0) invert(1); /* Makes SVG white on hover */
         }
         
         .download-icon {
-            width: 24px;
-            height: 24px;
-            background-color: #2e2626;
-            /* Placeholder for SVG icon - will be replaced later */
+            width: 26px;
+            height: 26px;
+            object-fit: fill;
+            padding: 15px 0; /* Match randomise button vertical padding */
+            box-sizing: content-box; /* Padding doesn't affect icon size */
         }
         
         .bottom-margin {
@@ -276,7 +276,7 @@
                 <div class="divider2"></div>
                 
                 <div class="type-pun-section">
-                    Add Your Pun 
+                    Type Pun 
                 </div>
                 
                 <div class="type-input-section">
@@ -286,7 +286,7 @@
                 <div class="button-section">
                     <div class="randomise-button">Randomise</div>
                     <div class="download-button">
-                        <div class="download-icon"></div>
+                        <img src="Icons/SFC-Tool-Favicon.svg" alt="Download" class="download-icon">
                     </div>
                 </div>
                 
