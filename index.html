@@ -77,11 +77,50 @@
         }
         
         .canvas-section {
-            grid-row: 3 / 5;
+            grid-row: 3;
             font-size: 30px; /* Instructions font size */
             color: #2e2626;
             text-wrap: pretty;
             hanging-punctuation: first last;
+            display: flex;
+            align-items: flex-start; /* Keep heading at top */
+            padding-bottom: 10px; /* Add space below heading */
+        }
+        
+        .aspect-ratio-buttons {
+            grid-row: 4;
+            display: flex;
+            width: 100%;
+            height: 50%;
+            gap: 1.25%; /* Spacing between buttons */
+            margin-top: -12.5%; /* Move buttons up by negative margin */
+        }
+        
+        .aspect-button {
+            flex: 1;
+            background-color: #ffffff;
+            border: 2px solid #2e2626; /* Stroke width - change this value */
+            border-radius: 12.5px; /* Rounded corners - change this value */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px; /* Button text size */
+            color: #2e2626;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            text-wrap: pretty;
+            hanging-punctuation: first last;
+            padding: 0; /* No side padding */
+        }
+        
+        .aspect-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .aspect-button.active {
+            background-color: #2e2626;
+            color: #ffffff;
         }
         
         .divider2 {
@@ -128,6 +167,14 @@
                     Canvas Size 
                 </div>
                 
+                <div class="aspect-ratio-buttons">
+                    <div class="aspect-button">16:9</div>
+                    <div class="aspect-button">9:16</div>
+                    <div class="aspect-button">4:5</div>
+                    <div class="aspect-button">3:2</div>
+                    <div class="aspect-button">1:1</div>
+                </div>
+                
                 <div class="divider2"></div>
                 
                 <div class="type-pun-section">
@@ -142,5 +189,22 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Add click functionality to aspect ratio buttons
+        document.querySelectorAll('.aspect-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.aspect-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                this.classList.add('active');
+            });
+        });
+        
+        // Optional: Set first button as active by default
+        document.querySelector('.aspect-button').classList.add('active');
+    </script>
 </body>
 </html>
