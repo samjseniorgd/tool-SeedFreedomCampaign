@@ -56,7 +56,7 @@
         
         .row-grid {
             display: grid;
-            grid-template-rows: 1fr 2.5% 1fr 1fr 2.5% 1fr 1fr 1fr 1fr 2.5%;
+            grid-template-rows: 1fr 2.5% 1fr 1fr 2.5% 0.75fr 1.25fr 0.75fr 0.75fr 2.5%;
             height: 100%;
         }
         
@@ -131,20 +131,118 @@
         }
         
         .type-pun-section {
-            grid-row: 6 / 9;
+            grid-row: 6;
             font-size: 30px; /* Instructions font size */
             text-wrap: pretty;
             hanging-punctuation: first last;
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 10px;
+        }
+        
+        .type-input-section {
+            grid-row: 7;
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .type-input {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border: 2px solid #2e2626;
+            border-radius: 12.5px;
+            font-family: 'New Spirit', sans-serif;
+            font-size: 20px;
+            color: #2e2626;
+            padding: 15px;
+            box-sizing: border-box;
+            resize: none;
+            outline: none;
+            text-wrap: pretty;
+            hanging-punctuation: first last;
+            margin-top: -6.25%;
+        }
+        
+        .type-input::placeholder {
+            color: #999;
+            font-style: none;
+        }
+        
+        .type-input:focus {
+            border-color: #2e2626;
+            box-shadow: 0 0 0 2px rgba(46, 38, 38, 0.1);
         }
         
         .button-section {
-            grid-row: 9;
-            font-size: 30px; /* Buttons/links font size */
+            grid-row: 8;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            gap: 1.25%; /* Same spacing as aspect ratio buttons */
+            align-items: flex-end; /* Align buttons to bottom */
+        }
+        
+        .randomise-button {
+            background-color: #ffffff;
+            border: 2px solid #2e2626;
+            border-radius: 12.5px;
+            font-family: 'New Spirit', sans-serif;
+            font-size: 20px;
+            color: #2e2626;
+            padding: 15px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
             text-wrap: pretty;
             hanging-punctuation: first last;
+            flex: 4; /* Takes width of 4 buttons (matches 3:2 button width) */
+            min-height: 0;
+        }
+        
+        .randomise-button:hover {
+            background-color: #2e2626;
+            color: #ffffff;
+        }
+        
+        .download-button {
+            background-color: #ffffff;
+            border: 2px solid #2e2626;
+            border-radius: 12.5px;
+            font-family: 'New Spirit', sans-serif;
+            font-size: 20px;
+            color: #2e2626;
+            padding: 15px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            text-wrap: pretty;
+            hanging-punctuation: first last;
+            flex: 1; /* Takes width of 1 button (matches last button width) */
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .download-button:hover {
+            background-color: #2e2626;
+            color: #ffffff;
+        }
+        
+        .download-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #2e2626;
+            /* Placeholder for SVG icon - will be replaced later */
         }
         
         .bottom-margin {
+            grid-row: 9;
+        }
+        
+        .spacing-row {
             grid-row: 10;
         }
     </style>
@@ -178,14 +276,23 @@
                 <div class="divider2"></div>
                 
                 <div class="type-pun-section">
-                    Type Pun 
+                    Add Your Pun 
+                </div>
+                
+                <div class="type-input-section">
+                    <textarea class="type-input" placeholder="Type your pun here..."></textarea>
                 </div>
                 
                 <div class="button-section">
-                    Randomise Pattern Download 
+                    <div class="randomise-button">Randomise</div>
+                    <div class="download-button">
+                        <div class="download-icon"></div>
+                    </div>
                 </div>
                 
                 <div class="bottom-margin"></div>
+                
+                <div class="spacing-row"></div>
             </div>
         </div>
     </div>
