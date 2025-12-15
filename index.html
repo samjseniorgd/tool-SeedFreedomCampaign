@@ -17,18 +17,26 @@
             height: 1080px;
             overflow: hidden;
             font-family: 'New Spirit', sans-serif;
+            background-color: #ffffff;
         }
         
         .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1920px;
+            height: 1080px;
             display: flex;
-            width: 100%;
-            height: 100%;
         }
         
-        .column1 {
-            width: 2.5%;
+        .side-footer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 48px;
+            height: 1080px;
             background-color: #ffffff;
-            font-size: 14px; /* Side footer font size */
+            font-size: 14px;
             color: #2e2626;
             display: flex;
             align-items: flex-end;
@@ -39,15 +47,46 @@
             hanging-punctuation: first last;
         }
         
-        .column2 {
-            width: 67.5%;
+        .gallery {
+            position: absolute;
+            left: 48px;
+            top: 0;
+            width: 1296px;
+            height: 1080px;
             background-color: #2e2626;
+            overflow: hidden;
         }
         
-        .column3 {
-            width: 30%;
+        .canvas-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: transparent;
+        }
+        
+        .p5-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        canvas {
+            display: block;
+        }
+        
+        .controls {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 576px;
+            height: 1080px;
             background-color: #ffffff;
-            padding: 2.5%;
+            padding: 48px;
             box-sizing: border-box;
             color: #2e2626;
             text-wrap: pretty;
@@ -56,13 +95,13 @@
         
         .row-grid {
             display: grid;
-            grid-template-rows: 1fr 2.5% 1fr 1fr 2.5% 0.75fr 1.25fr 0.75fr 0.75fr 2.5%;
+            grid-template-rows: 1fr 27px 1fr 1fr 27px 0.75fr 1.25fr 0.75fr 0.75fr 27px;
             height: 100%;
         }
         
         .title-section {
             grid-row: 1;
-            font-size: 50px; /* Title font size */
+            font-size: 50px;
             line-height: 100%;
             color: #2e2626;
             text-wrap: pretty;
@@ -78,13 +117,13 @@
         
         .canvas-section {
             grid-row: 3;
-            font-size: 30px; /* Instructions font size */
+            font-size: 30px;
             color: #2e2626;
             text-wrap: pretty;
             hanging-punctuation: first last;
             display: flex;
-            align-items: flex-start; /* Keep heading at top */
-            padding-bottom: 10px; /* Add space below heading */
+            align-items: flex-start;
+            padding-bottom: 10px;
         }
         
         .aspect-ratio-buttons {
@@ -92,26 +131,26 @@
             display: flex;
             width: 100%;
             height: 50%;
-            gap: 1.25%; /* Spacing between buttons */
-            margin-top: -12.5%; /* Move buttons up by negative margin */
+            gap: 24px;
+            margin-top: -12.5%;
         }
         
         .aspect-button {
             flex: 1;
             background-color: #ffffff;
-            border: 2px solid #2e2626; /* Stroke width - change this value */
-            border-radius: 12.5px; /* Rounded corners - change this value */
+            border: 2px solid #2e2626;
+            border-radius: 12.5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px; /* Button text size */
+            font-size: 20px;
             color: #2e2626;
             cursor: pointer;
             user-select: none;
             transition: all 0.2s ease;
             text-wrap: pretty;
             hanging-punctuation: first last;
-            padding: 0; /* No side padding */
+            padding: 0;
         }
         
         .aspect-button:hover {
@@ -132,7 +171,7 @@
         
         .type-pun-section {
             grid-row: 6;
-            font-size: 30px; /* Instructions font size */
+            font-size: 30px;
             text-wrap: pretty;
             hanging-punctuation: first last;
             display: flex;
@@ -167,7 +206,6 @@
         
         .type-input::placeholder {
             color: #999;
-            /* font-style: italic; */ /* Italics removed */
         }
         
         .type-input:focus {
@@ -180,8 +218,8 @@
             display: flex;
             width: 100%;
             height: 100%;
-            gap: 1.25%; /* Same spacing as aspect ratio buttons */
-            align-items: flex-end; /* Align buttons to bottom */
+            gap: 24px;
+            align-items: flex-end;
         }
         
         .randomise-button {
@@ -197,7 +235,7 @@
             text-align: center;
             text-wrap: pretty;
             hanging-punctuation: first last;
-            flex: 4; /* Takes width of 4 buttons (matches 3:2 button width) */
+            flex: 4;
             min-height: 0;
         }
         
@@ -214,12 +252,12 @@
             color: #2e2626;
             cursor: pointer;
             transition: all 0.2s ease;
-            flex: 1; /* Takes width of 1 button (matches last button width) */
+            flex: 1;
             min-height: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0; /* Remove padding, center SVG */
+            padding: 0;
         }
         
         .download-button:hover {
@@ -227,15 +265,15 @@
         }
         
         .download-button:hover .download-icon {
-            filter: brightness(0) invert(1); /* Makes SVG white on hover */
+            filter: brightness(0) invert(1);
         }
         
         .download-icon {
             width: 26px;
             height: 26px;
             object-fit: fill;
-            padding: 15px 0; /* Match randomise button vertical padding */
-            box-sizing: content-box; /* Padding doesn't affect icon size */
+            padding: 15px 0;
+            box-sizing: content-box;
         }
         
         .bottom-margin {
@@ -246,14 +284,17 @@
             grid-row: 10;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="column1">
+        <div class="side-footer">
             Side Footer
         </div>
-        <div class="column2"></div>
-        <div class="column3">
+        <div class="gallery" id="gallery">
+            <!-- Canvas wrapper will be inserted here -->
+        </div>
+        <div class="controls">
             <div class="row-grid">
                 <div class="title-section">
                     Seed Freedom <br>Poster Generator
@@ -266,11 +307,11 @@
                 </div>
                 
                 <div class="aspect-ratio-buttons">
-                    <div class="aspect-button">16:9</div>
-                    <div class="aspect-button">9:16</div>
-                    <div class="aspect-button">4:5</div>
-                    <div class="aspect-button">3:2</div>
-                    <div class="aspect-button">1:1</div>
+                    <div class="aspect-button" data-aspect="16:9">16:9</div>
+                    <div class="aspect-button" data-aspect="9:16">9:16</div>
+                    <div class="aspect-button" data-aspect="4:5">4:5</div>
+                    <div class="aspect-button" data-aspect="3:2" id="btn-3x2">3:2</div>
+                    <div class="aspect-button" data-aspect="1:1">1:1</div>
                 </div>
                 
                 <div class="divider2"></div>
@@ -280,12 +321,12 @@
                 </div>
                 
                 <div class="type-input-section">
-                    <textarea class="type-input" placeholder="Type your pun here..."></textarea>
+                    <textarea class="type-input" placeholder="Type your pun here..." id="pun-input"></textarea>
                 </div>
                 
                 <div class="button-section">
-                    <div class="randomise-button">Randomise</div>
-                    <div class="download-button">
+                    <div class="randomise-button" id="randomise-btn">Randomise</div>
+                    <div class="download-button" id="download-btn">
                         <img src="Icons/SFC-Tool-Favicon.svg" alt="Download" class="download-icon">
                     </div>
                 </div>
@@ -298,20 +339,1116 @@
     </div>
     
     <script>
-        // Add click functionality to aspect ratio buttons
-        document.querySelectorAll('.aspect-button').forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.aspect-button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                // Add active class to clicked button
-                this.classList.add('active');
-            });
-        });
+        // Global variables
+        let currentSketch = null;
+        let currentAspectRatio = '3:2';
+        let currentP5Instance = null;
         
-        // Optional: Set first button as active by default
-        document.querySelector('.aspect-button').classList.add('active');
+        // Aspect ratio dimensions mapping
+        const aspectDimensions = {
+            '16:9': { width: 900, height: 506.25 },
+            '9:16': { width: 506.25, height: 900 },
+            '4:5': { width: 720, height: 900 },
+            '3:2': { width: 900, height: 600 },
+            '1:1': { width: 900, height: 900 }
+        };
+        
+        // Function to load and initialize a p5.js sketch
+        function loadSketch(aspectRatio) {
+            // Remove existing sketch if any
+            if (currentSketch) {
+                currentSketch.remove();
+                currentSketch = null;
+                currentP5Instance = null;
+            }
+            
+            // Clear gallery container
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            
+            // Get the dimensions for this aspect ratio
+            const dimensions = aspectDimensions[aspectRatio];
+            
+            // Create a fixed wrapper for the canvas with exact dimensions
+            const canvasWrapper = document.createElement('div');
+            canvasWrapper.className = 'canvas-wrapper';
+            canvasWrapper.style.width = dimensions.width + 'px';
+            canvasWrapper.style.height = dimensions.height + 'px';
+            
+            // Create a container for p5 canvas inside the wrapper
+            const p5Container = document.createElement('div');
+            p5Container.className = 'p5-container';
+            p5Container.style.width = '100%';
+            p5Container.style.height = '100%';
+            canvasWrapper.appendChild(p5Container);
+            gallery.appendChild(canvasWrapper);
+            
+            // Load appropriate script based on aspect ratio
+            switch(aspectRatio) {
+                case '3:2':
+                    load3x2Sketch(p5Container, dimensions.width, dimensions.height);
+                    break;
+                case '1:1':
+                    load1x1Sketch(p5Container, dimensions.width, dimensions.height);
+                    break;
+                case '4:5':
+                    load4x5Sketch(p5Container, dimensions.width, dimensions.height);
+                    break;
+                case '9:16':
+                    load9x16Sketch(p5Container, dimensions.width, dimensions.height);
+                    break;
+                case '16:9':
+                    load16x9Sketch(p5Container, dimensions.width, dimensions.height);
+                    break;
+                default:
+                    showPlaceholder(p5Container, aspectRatio);
+            }
+        }
+        
+        // Function to show placeholder
+        function showPlaceholder(container, aspectRatio) {
+            const placeholder = document.createElement('div');
+            placeholder.style.color = 'white';
+            placeholder.style.fontSize = '24px';
+            placeholder.style.textAlign = 'center';
+            placeholder.style.position = 'absolute';
+            placeholder.style.top = '50%';
+            placeholder.style.left = '50%';
+            placeholder.style.transform = 'translate(-50%, -50%)';
+            placeholder.innerHTML = `${aspectRatio}<br>coming soon!`;
+            container.appendChild(placeholder);
+        }
+        
+        // 3:2 sketch
+        function load3x2Sketch(container, width, height) {
+            const sketch = function(p) {
+                p.images = [];
+                p.selectedIndices = [];
+                p.scalePercent = 0.9;
+                
+                // Dot grid variables
+                p.dotRows = 10;
+                p.dotCols = 10;
+                p.dotSize = 6;
+                
+                // Color palette
+                p.colors = [
+                    {r: 168, g: 31, b: 35},
+                    {r: 239, g: 214, b: 21},
+                    {r: 232, g: 114, b: 36},
+                    {r: 39, g: 76, b: 35},
+                    {r: 28, g: 90, b: 153}
+                ];
+                
+                p.areaDots = {
+                    top: [],
+                    right: [],
+                    bottom: [],
+                    left: []
+                };
+                
+                p.preload = function() {
+                    // Load all 11 images
+                    for (let i = 1; i <= 11; i++) {
+                        const num = i.toString().padStart(2, '0');
+                        p.images[i-1] = p.loadImage(`images/Riso-Illustrations-${num}.jpg`);
+                    }
+                };
+                
+                p.setup = function() {
+                    // Use the exact width and height passed to the function
+                    const canvas = p.createCanvas(width, height);
+                    canvas.parent(container);
+                    
+                    // Select 4 random unique images
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    // Calculate which dots belong to which area
+                    p.calculateAreaDots();
+                    
+                    // Draw once
+                    p.drawImages();
+                };
+                
+                p.calculateAreaDots = function() {
+                    // Clear previous areas
+                    for (let area in p.areaDots) {
+                        p.areaDots[area] = [];
+                    }
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    const topHeight = p.height * 0.3;
+                    const bottomHeight = p.height * 0.7;
+                    const leftWidth = p.width * 0.3;
+                    const rightWidth = p.width * 0.7;
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            
+                            if (y < topHeight) {
+                                p.areaDots.top.push({x: x, y: y, row: row, col: col});
+                            } else if (x > rightWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.right.push({x: x, y: y, row: row, col: col});
+                                }
+                            } else if (y > bottomHeight) {
+                                p.areaDots.bottom.push({x: x, y: y, row: row, col: col});
+                            } else if (x < leftWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.left.push({x: x, y: y, row: row, col: col});
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                p.drawImages = function() {
+                    p.background(255);
+                    
+                    // Draw dot grid
+                    p.drawDotGrid();
+                    
+                    p.blendMode(p.MULTIPLY);
+                    
+                    const areas = ["top", "right", "bottom", "left"];
+                    let shuffledAreas = p.shuffleArray([...areas]);
+                    
+                    let selectedColors = [];
+                    let availableColorIndices = [0, 1, 2, 3, 4];
+                    
+                    while (selectedColors.length < 4) {
+                        let r = p.floor(p.random(availableColorIndices.length));
+                        let colorIndex = availableColorIndices[r];
+                        selectedColors.push(p.colors[colorIndex]);
+                        availableColorIndices.splice(r, 1);
+                    }
+                    
+                    for (let i = 0; i < p.selectedIndices.length; i++) {
+                        let img = p.images[p.selectedIndices[i]];
+                        let area = shuffledAreas[i];
+                        let color = selectedColors[i];
+                        
+                        if (img && img.width > 0 && p.areaDots[area].length > 0) {
+                            let coloredImage = p.colorizeImage(img, color);
+                            
+                            let w = img.width * p.scalePercent;
+                            let h = img.height * p.scalePercent;
+                            
+                            let randomDot = p.random(p.areaDots[area]);
+                            
+                            let x = randomDot.x - w/2;
+                            let y = randomDot.y - h/2;
+                            
+                            p.image(coloredImage, x, y, w, h);
+                        }
+                    }
+                    
+                    p.blendMode(p.BLEND);
+                };
+                
+                p.colorizeImage = function(img, color) {
+                    let colored = p.createGraphics(img.width, img.height);
+                    
+                    colored.image(img, 0, 0);
+                    
+                    colored.loadPixels();
+                    img.loadPixels();
+                    
+                    for (let i = 0; i < img.pixels.length; i += 4) {
+                        let r = img.pixels[i];
+                        let g = img.pixels[i + 1];
+                        let b = img.pixels[i + 2];
+                        let a = img.pixels[i + 3];
+                        
+                        let brightness = (r + g + b) / 3;
+                        let factor = brightness / 255;
+                        
+                        colored.pixels[i] = color.r * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 1] = color.g * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 2] = color.b * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 3] = a;
+                    }
+                    
+                    colored.updatePixels();
+                    return colored;
+                };
+                
+                p.drawDotGrid = function() {
+                    p.fill(255);
+                    p.noStroke();
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            p.ellipse(x, y, p.dotSize, p.dotSize);
+                        }
+                    }
+                };
+                
+                p.shuffleArray = function(array) {
+                    let shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        let j = p.floor(p.random(i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                };
+                
+                p.randomise = function() {
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    p.drawImages();
+                };
+                
+                p.mousePressed = function() {
+                    if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                        p.randomise();
+                    }
+                };
+            };
+            
+            currentSketch = new p5(sketch);
+            currentP5Instance = currentSketch;
+        }
+        
+        // 1:1 sketch
+        function load1x1Sketch(container, width, height) {
+            const sketch = function(p) {
+                p.images = [];
+                p.selectedIndices = [];
+                p.scalePercent = 0.92;
+                
+                // Dot grid variables
+                p.dotRows = 10;
+                p.dotCols = 10;
+                p.dotSize = 6;
+                
+                // Color palette
+                p.colors = [
+                    {r: 168, g: 31, b: 35},
+                    {r: 239, g: 214, b: 21},
+                    {r: 232, g: 114, b: 36},
+                    {r: 39, g: 76, b: 35},
+                    {r: 28, g: 90, b: 153}
+                ];
+                
+                p.areaDots = {
+                    top: [],
+                    right: [],
+                    bottom: [],
+                    left: []
+                };
+                
+                p.preload = function() {
+                    // Load all 11 images
+                    for (let i = 1; i <= 11; i++) {
+                        const num = i.toString().padStart(2, '0');
+                        p.images[i-1] = p.loadImage(`images/Riso-Illustrations-${num}.jpg`);
+                    }
+                };
+                
+                p.setup = function() {
+                    const canvas = p.createCanvas(width, height);
+                    canvas.parent(container);
+                    
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    p.calculateAreaDots();
+                    p.drawImages();
+                };
+                
+                p.calculateAreaDots = function() {
+                    for (let area in p.areaDots) {
+                        p.areaDots[area] = [];
+                    }
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    const topHeight = p.height * 0.32;
+                    const bottomHeight = p.height * 0.68;
+                    const leftWidth = p.width * 0.32;
+                    const rightWidth = p.width * 0.68;
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            
+                            if (y < topHeight) {
+                                p.areaDots.top.push({x: x, y: y, row: row, col: col});
+                            } else if (x > rightWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.right.push({x: x, y: y, row: row, col: col});
+                                }
+                            } else if (y > bottomHeight) {
+                                p.areaDots.bottom.push({x: x, y: y, row: row, col: col});
+                            } else if (x < leftWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.left.push({x: x, y: y, row: row, col: col});
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                p.drawImages = function() {
+                    p.background(255);
+                    p.drawDotGrid();
+                    p.blendMode(p.MULTIPLY);
+                    
+                    const areas = ["top", "right", "bottom", "left"];
+                    let shuffledAreas = p.shuffleArray([...areas]);
+                    
+                    let selectedColors = [];
+                    let availableColorIndices = [0, 1, 2, 3, 4];
+                    
+                    while (selectedColors.length < 4) {
+                        let r = p.floor(p.random(availableColorIndices.length));
+                        let colorIndex = availableColorIndices[r];
+                        selectedColors.push(p.colors[colorIndex]);
+                        availableColorIndices.splice(r, 1);
+                    }
+                    
+                    for (let i = 0; i < p.selectedIndices.length; i++) {
+                        let img = p.images[p.selectedIndices[i]];
+                        let area = shuffledAreas[i];
+                        let color = selectedColors[i];
+                        
+                        if (img && img.width > 0 && p.areaDots[area].length > 0) {
+                            let coloredImage = p.colorizeImage(img, color);
+                            let w = img.width * p.scalePercent;
+                            let h = img.height * p.scalePercent;
+                            let randomDot = p.random(p.areaDots[area]);
+                            let x = randomDot.x - w/2;
+                            let y = randomDot.y - h/2;
+                            p.image(coloredImage, x, y, w, h);
+                        }
+                    }
+                    
+                    p.blendMode(p.BLEND);
+                };
+                
+                p.colorizeImage = function(img, color) {
+                    let colored = p.createGraphics(img.width, img.height);
+                    colored.image(img, 0, 0);
+                    colored.loadPixels();
+                    img.loadPixels();
+                    
+                    for (let i = 0; i < img.pixels.length; i += 4) {
+                        let r = img.pixels[i];
+                        let g = img.pixels[i + 1];
+                        let b = img.pixels[i + 2];
+                        let a = img.pixels[i + 3];
+                        let brightness = (r + g + b) / 3;
+                        let factor = brightness / 255;
+                        
+                        colored.pixels[i] = color.r * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 1] = color.g * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 2] = color.b * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 3] = a;
+                    }
+                    
+                    colored.updatePixels();
+                    return colored;
+                };
+                
+                p.drawDotGrid = function() {
+                    p.fill(255);
+                    p.noStroke();
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            p.ellipse(x, y, p.dotSize, p.dotSize);
+                        }
+                    }
+                };
+                
+                p.shuffleArray = function(array) {
+                    let shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        let j = p.floor(p.random(i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                };
+                
+                p.randomise = function() {
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    p.drawImages();
+                };
+                
+                p.mousePressed = function() {
+                    if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                        p.randomise();
+                    }
+                };
+            };
+            
+            currentSketch = new p5(sketch);
+            currentP5Instance = currentSketch;
+        }
+        
+        // 4:5 sketch
+        function load4x5Sketch(container, width, height) {
+            const sketch = function(p) {
+                p.images = [];
+                p.selectedIndices = [];
+                p.scalePercent = 0.88;
+                
+                // Dot grid variables
+                p.dotRows = 11;
+                p.dotCols = 9;
+                p.dotSize = 6;
+                
+                // Color palette
+                p.colors = [
+                    {r: 168, g: 31, b: 35},
+                    {r: 239, g: 214, b: 21},
+                    {r: 232, g: 114, b: 36},
+                    {r: 39, g: 76, b: 35},
+                    {r: 28, g: 90, b: 153}
+                ];
+                
+                p.areaDots = {
+                    top: [],
+                    right: [],
+                    bottom: [],
+                    left: []
+                };
+                
+                p.preload = function() {
+                    for (let i = 1; i <= 11; i++) {
+                        const num = i.toString().padStart(2, '0');
+                        p.images[i-1] = p.loadImage(`images/Riso-Illustrations-${num}.jpg`);
+                    }
+                };
+                
+                p.setup = function() {
+                    const canvas = p.createCanvas(width, height);
+                    canvas.parent(container);
+                    
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    p.calculateAreaDots();
+                    p.drawImages();
+                };
+                
+                p.calculateAreaDots = function() {
+                    for (let area in p.areaDots) {
+                        p.areaDots[area] = [];
+                    }
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    const topHeight = p.height * 0.30;
+                    const bottomHeight = p.height * 0.70;
+                    const leftWidth = p.width * 0.30;
+                    const rightWidth = p.width * 0.70;
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            
+                            if (y < topHeight) {
+                                p.areaDots.top.push({x: x, y: y, row: row, col: col});
+                            } else if (x > rightWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.right.push({x: x, y: y, row: row, col: col});
+                                }
+                            } else if (y > bottomHeight) {
+                                p.areaDots.bottom.push({x: x, y: y, row: row, col: col});
+                            } else if (x < leftWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.left.push({x: x, y: y, row: row, col: col});
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                p.drawImages = function() {
+                    p.background(255);
+                    p.drawDotGrid();
+                    p.blendMode(p.MULTIPLY);
+                    
+                    const areas = ["top", "right", "bottom", "left"];
+                    let shuffledAreas = p.shuffleArray([...areas]);
+                    
+                    let selectedColors = [];
+                    let availableColorIndices = [0, 1, 2, 3, 4];
+                    
+                    while (selectedColors.length < 4) {
+                        let r = p.floor(p.random(availableColorIndices.length));
+                        let colorIndex = availableColorIndices[r];
+                        selectedColors.push(p.colors[colorIndex]);
+                        availableColorIndices.splice(r, 1);
+                    }
+                    
+                    for (let i = 0; i < p.selectedIndices.length; i++) {
+                        let img = p.images[p.selectedIndices[i]];
+                        let area = shuffledAreas[i];
+                        let color = selectedColors[i];
+                        
+                        if (img && img.width > 0 && p.areaDots[area].length > 0) {
+                            let coloredImage = p.colorizeImage(img, color);
+                            let w = img.width * p.scalePercent;
+                            let h = img.height * p.scalePercent;
+                            let randomDot = p.random(p.areaDots[area]);
+                            let x = randomDot.x - w/2;
+                            let y = randomDot.y - h/2;
+                            p.image(coloredImage, x, y, w, h);
+                        }
+                    }
+                    
+                    p.blendMode(p.BLEND);
+                };
+                
+                p.colorizeImage = function(img, color) {
+                    let colored = p.createGraphics(img.width, img.height);
+                    colored.image(img, 0, 0);
+                    colored.loadPixels();
+                    img.loadPixels();
+                    
+                    for (let i = 0; i < img.pixels.length; i += 4) {
+                        let r = img.pixels[i];
+                        let g = img.pixels[i + 1];
+                        let b = img.pixels[i + 2];
+                        let a = img.pixels[i + 3];
+                        let brightness = (r + g + b) / 3;
+                        let factor = brightness / 255;
+                        
+                        colored.pixels[i] = color.r * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 1] = color.g * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 2] = color.b * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 3] = a;
+                    }
+                    
+                    colored.updatePixels();
+                    return colored;
+                };
+                
+                p.drawDotGrid = function() {
+                    p.fill(255);
+                    p.noStroke();
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            p.ellipse(x, y, p.dotSize, p.dotSize);
+                        }
+                    }
+                };
+                
+                p.shuffleArray = function(array) {
+                    let shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        let j = p.floor(p.random(i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                };
+                
+                p.randomise = function() {
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    p.drawImages();
+                };
+                
+                p.mousePressed = function() {
+                    if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                        p.randomise();
+                    }
+                };
+            };
+            
+            currentSketch = new p5(sketch);
+            currentP5Instance = currentSketch;
+        }
+        
+        // 9:16 sketch
+        function load9x16Sketch(container, width, height) {
+            const sketch = function(p) {
+                p.images = [];
+                p.selectedIndices = [];
+                p.scalePercent = 0.85;
+                
+                // Dot grid variables
+                p.dotRows = 12;
+                p.dotCols = 8;
+                p.dotSize = 6;
+                
+                // Color palette
+                p.colors = [
+                    {r: 168, g: 31, b: 35},
+                    {r: 239, g: 214, b: 21},
+                    {r: 232, g: 114, b: 36},
+                    {r: 39, g: 76, b: 35},
+                    {r: 28, g: 90, b: 153}
+                ];
+                
+                p.areaDots = {
+                    top: [],
+                    right: [],
+                    bottom: [],
+                    left: []
+                };
+                
+                p.preload = function() {
+                    for (let i = 1; i <= 11; i++) {
+                        const num = i.toString().padStart(2, '0');
+                        p.images[i-1] = p.loadImage(`images/Riso-Illustrations-${num}.jpg`);
+                    }
+                };
+                
+                p.setup = function() {
+                    const canvas = p.createCanvas(width, height);
+                    canvas.parent(container);
+                    
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    p.calculateAreaDots();
+                    p.drawImages();
+                };
+                
+                p.calculateAreaDots = function() {
+                    for (let area in p.areaDots) {
+                        p.areaDots[area] = [];
+                    }
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    const topHeight = p.height * 0.28;
+                    const bottomHeight = p.height * 0.72;
+                    const leftWidth = p.width * 0.28;
+                    const rightWidth = p.width * 0.72;
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            
+                            if (y < topHeight) {
+                                p.areaDots.top.push({x: x, y: y, row: row, col: col});
+                            } else if (x > rightWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.right.push({x: x, y: y, row: row, col: col});
+                                }
+                            } else if (y > bottomHeight) {
+                                p.areaDots.bottom.push({x: x, y: y, row: row, col: col});
+                            } else if (x < leftWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.left.push({x: x, y: y, row: row, col: col});
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                p.drawImages = function() {
+                    p.background(255);
+                    p.drawDotGrid();
+                    p.blendMode(p.MULTIPLY);
+                    
+                    const areas = ["top", "right", "bottom", "left"];
+                    let shuffledAreas = p.shuffleArray([...areas]);
+                    
+                    let selectedColors = [];
+                    let availableColorIndices = [0, 1, 2, 3, 4];
+                    
+                    while (selectedColors.length < 4) {
+                        let r = p.floor(p.random(availableColorIndices.length));
+                        let colorIndex = availableColorIndices[r];
+                        selectedColors.push(p.colors[colorIndex]);
+                        availableColorIndices.splice(r, 1);
+                    }
+                    
+                    for (let i = 0; i < p.selectedIndices.length; i++) {
+                        let img = p.images[p.selectedIndices[i]];
+                        let area = shuffledAreas[i];
+                        let color = selectedColors[i];
+                        
+                        if (img && img.width > 0 && p.areaDots[area].length > 0) {
+                            let coloredImage = p.colorizeImage(img, color);
+                            let w = img.width * p.scalePercent;
+                            let h = img.height * p.scalePercent;
+                            let randomDot = p.random(p.areaDots[area]);
+                            let x = randomDot.x - w/2;
+                            let y = randomDot.y - h/2;
+                            p.image(coloredImage, x, y, w, h);
+                        }
+                    }
+                    
+                    p.blendMode(p.BLEND);
+                };
+                
+                p.colorizeImage = function(img, color) {
+                    let colored = p.createGraphics(img.width, img.height);
+                    colored.image(img, 0, 0);
+                    colored.loadPixels();
+                    img.loadPixels();
+                    
+                    for (let i = 0; i < img.pixels.length; i += 4) {
+                        let r = img.pixels[i];
+                        let g = img.pixels[i + 1];
+                        let b = img.pixels[i + 2];
+                        let a = img.pixels[i + 3];
+                        let brightness = (r + g + b) / 3;
+                        let factor = brightness / 255;
+                        
+                        colored.pixels[i] = color.r * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 1] = color.g * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 2] = color.b * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 3] = a;
+                    }
+                    
+                    colored.updatePixels();
+                    return colored;
+                };
+                
+                p.drawDotGrid = function() {
+                    p.fill(255);
+                    p.noStroke();
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            p.ellipse(x, y, p.dotSize, p.dotSize);
+                        }
+                    }
+                };
+                
+                p.shuffleArray = function(array) {
+                    let shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        let j = p.floor(p.random(i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                };
+                
+                p.randomise = function() {
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    p.drawImages();
+                };
+                
+                p.mousePressed = function() {
+                    if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                        p.randomise();
+                    }
+                };
+            };
+            
+            currentSketch = new p5(sketch);
+            currentP5Instance = currentSketch;
+        }
+        
+        // 16:9 sketch
+        function load16x9Sketch(container, width, height) {
+            const sketch = function(p) {
+                p.images = [];
+                p.selectedIndices = [];
+                p.scalePercent = 0.85;
+                
+                // Dot grid variables
+                p.dotRows = 8;
+                p.dotCols = 12;
+                p.dotSize = 6;
+                
+                // Color palette
+                p.colors = [
+                    {r: 168, g: 31, b: 35},
+                    {r: 239, g: 214, b: 21},
+                    {r: 232, g: 114, b: 36},
+                    {r: 39, g: 76, b: 35},
+                    {r: 28, g: 90, b: 153}
+                ];
+                
+                p.areaDots = {
+                    top: [],
+                    right: [],
+                    bottom: [],
+                    left: []
+                };
+                
+                p.preload = function() {
+                    for (let i = 1; i <= 11; i++) {
+                        const num = i.toString().padStart(2, '0');
+                        p.images[i-1] = p.loadImage(`images/Riso-Illustrations-${num}.jpg`);
+                    }
+                };
+                
+                p.setup = function() {
+                    const canvas = p.createCanvas(width, height);
+                    canvas.parent(container);
+                    
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    
+                    p.calculateAreaDots();
+                    p.drawImages();
+                };
+                
+                p.calculateAreaDots = function() {
+                    for (let area in p.areaDots) {
+                        p.areaDots[area] = [];
+                    }
+                    
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    const topHeight = p.height * 0.28;
+                    const bottomHeight = p.height * 0.72;
+                    const leftWidth = p.width * 0.28;
+                    const rightWidth = p.width * 0.72;
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            
+                            if (y < topHeight) {
+                                p.areaDots.top.push({x: x, y: y, row: row, col: col});
+                            } else if (x > rightWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.right.push({x: x, y: y, row: row, col: col});
+                                }
+                            } else if (y > bottomHeight) {
+                                p.areaDots.bottom.push({x: x, y: y, row: row, col: col});
+                            } else if (x < leftWidth) {
+                                if (y >= topHeight && y <= bottomHeight) {
+                                    p.areaDots.left.push({x: x, y: y, row: row, col: col});
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                p.drawImages = function() {
+                    p.background(255);
+                    p.drawDotGrid();
+                    p.blendMode(p.MULTIPLY);
+                    
+                    const areas = ["top", "right", "bottom", "left"];
+                    let shuffledAreas = p.shuffleArray([...areas]);
+                    
+                    let selectedColors = [];
+                    let availableColorIndices = [0, 1, 2, 3, 4];
+                    
+                    while (selectedColors.length < 4) {
+                        let r = p.floor(p.random(availableColorIndices.length));
+                        let colorIndex = availableColorIndices[r];
+                        selectedColors.push(p.colors[colorIndex]);
+                        availableColorIndices.splice(r, 1);
+                    }
+                    
+                    for (let i = 0; i < p.selectedIndices.length; i++) {
+                        let img = p.images[p.selectedIndices[i]];
+                        let area = shuffledAreas[i];
+                        let color = selectedColors[i];
+                        
+                        if (img && img.width > 0 && p.areaDots[area].length > 0) {
+                            let coloredImage = p.colorizeImage(img, color);
+                            let w = img.width * p.scalePercent;
+                            let h = img.height * p.scalePercent;
+                            let randomDot = p.random(p.areaDots[area]);
+                            let x = randomDot.x - w/2;
+                            let y = randomDot.y - h/2;
+                            p.image(coloredImage, x, y, w, h);
+                        }
+                    }
+                    
+                    p.blendMode(p.BLEND);
+                };
+                
+                p.colorizeImage = function(img, color) {
+                    let colored = p.createGraphics(img.width, img.height);
+                    colored.image(img, 0, 0);
+                    colored.loadPixels();
+                    img.loadPixels();
+                    
+                    for (let i = 0; i < img.pixels.length; i += 4) {
+                        let r = img.pixels[i];
+                        let g = img.pixels[i + 1];
+                        let b = img.pixels[i + 2];
+                        let a = img.pixels[i + 3];
+                        let brightness = (r + g + b) / 3;
+                        let factor = brightness / 255;
+                        
+                        colored.pixels[i] = color.r * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 1] = color.g * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 2] = color.b * (1 - factor) + 255 * factor;
+                        colored.pixels[i + 3] = a;
+                    }
+                    
+                    colored.updatePixels();
+                    return colored;
+                };
+                
+                p.drawDotGrid = function() {
+                    p.fill(255);
+                    p.noStroke();
+                    const horizontalSpacing = p.width / (p.dotCols - 1);
+                    const verticalSpacing = p.height / (p.dotRows - 1);
+                    
+                    for (let row = 0; row < p.dotRows; row++) {
+                        for (let col = 0; col < p.dotCols; col++) {
+                            const x = col * horizontalSpacing;
+                            const y = row * verticalSpacing;
+                            p.ellipse(x, y, p.dotSize, p.dotSize);
+                        }
+                    }
+                };
+                
+                p.shuffleArray = function(array) {
+                    let shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        let j = p.floor(p.random(i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                };
+                
+                p.randomise = function() {
+                    p.selectedIndices = [];
+                    while (p.selectedIndices.length < 4) {
+                        let r = p.floor(p.random(11));
+                        if (!p.selectedIndices.includes(r)) {
+                            p.selectedIndices.push(r);
+                        }
+                    }
+                    p.drawImages();
+                };
+                
+                p.mousePressed = function() {
+                    if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
+                        p.randomise();
+                    }
+                };
+            };
+            
+            currentSketch = new p5(sketch);
+            currentP5Instance = currentSketch;
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aspect ratio button click handlers
+            document.querySelectorAll('.aspect-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.aspect-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get the aspect ratio from data attribute
+                    const aspectRatio = this.getAttribute('data-aspect');
+                    currentAspectRatio = aspectRatio;
+                    
+                    // Load the appropriate sketch
+                    loadSketch(aspectRatio);
+                });
+            });
+            
+            // Randomise button click handler
+            document.getElementById('randomise-btn').addEventListener('click', function() {
+                if (currentP5Instance && currentP5Instance.randomise) {
+                    currentP5Instance.randomise();
+                }
+            });
+            
+            // Download button click handler (placeholder)
+            document.getElementById('download-btn').addEventListener('click', function() {
+                // TODO: Implement download functionality
+                console.log('Download clicked');
+                alert('Download functionality coming soon!');
+            });
+            
+            // Pun input handler
+            document.getElementById('pun-input').addEventListener('input', function() {
+                // TODO: Implement pun text overlay
+                console.log('Pun updated:', this.value);
+            });
+            
+            // Set 3:2 as default active and load it
+            document.getElementById('btn-3x2').classList.add('active');
+            loadSketch('3:2');
+        });
     </script>
 </body>
 </html>
