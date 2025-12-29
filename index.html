@@ -10,11 +10,15 @@
             font-style: normal;
         }
         
-        body {
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
             margin: 0;
             padding: 0;
-            width: 1920px;
-            height: 1080px;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             font-family: 'New Spirit', sans-serif;
             background-color: #ffffff;
@@ -24,8 +28,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 1920px;
-            height: 1080px;
+            width: 100%;
+            height: 100%;
             display: flex;
         }
         
@@ -33,61 +37,85 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 48px;
-            height: 1080px;
+            width: 2.5%;
+            height: 100%;
             background-color: #ffffff;
-            font-size: 14px;
-            color: #2e2626;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 40px;
-            box-sizing: border-box;
-            text-wrap: pretty;
-            hanging-punctuation: first last;
         }
         
         .gallery {
             position: absolute;
-            left: 48px;
+            left: 2.5%;
             top: 0;
-            width: 1296px;
-            height: 1080px;
+            width: 67.5%;
+            height: 100%;
             background-color: #2e2626;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .canvas-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            background-color: transparent;
+            background-color: #ffffff;
+            transition: width 0.3s, height 0.3s;
+            max-width: 100%;
+            max-height: 100%;
+            position: relative;
+            overflow: hidden;
         }
         
         .p5-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .p5-canvas {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .text-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 10;
         }
         
-        canvas {
-            display: block;
+        .text-content {
+            font-family: 'New Spirit', sans-serif;
+            font-size: 85px; /* Updated to 85px */
+            color: #000000;
+            text-align: center;
+            line-height: 1.1;
+            padding: 20px;
+            max-width: 90%;
+            word-wrap: break-word;
+            text-wrap: pretty;
+            hanging-punctuation: first last;
+            text-transform: uppercase;
+            hyphens: auto; /* Added hyphenation */
+            -webkit-hyphens: auto; /* Safari support */
+            -ms-hyphens: auto; /* IE/Edge support */
         }
         
         .controls {
             position: absolute;
             right: 0;
             top: 0;
-            width: 576px;
-            height: 1080px;
+            width: 30%;
+            height: 100%;
             background-color: #ffffff;
             padding: 48px;
-            box-sizing: border-box;
             color: #2e2626;
             text-wrap: pretty;
             hanging-punctuation: first last;
@@ -95,8 +123,9 @@
         
         .row-grid {
             display: grid;
-            grid-template-rows: 1fr 27px 1fr 1fr 27px 0.75fr 1.25fr 0.75fr 0.75fr 27px;
+            grid-template-rows: 1fr 10px 27px auto auto 10px 27px auto 1.25fr 0.75fr 0.75fr 27px;
             height: 100%;
+            gap: 0;
         }
         
         .title-section {
@@ -108,31 +137,35 @@
             hanging-punctuation: first last;
         }
         
-        .divider {
+        .spacing-row-1 {
             grid-row: 2;
+        }
+        
+        .divider {
+            grid-row: 3;
             height: 4px;
             background-color: #2e2626;
             align-self: center;
+            width: 100%;
         }
         
         .canvas-section {
-            grid-row: 3;
+            grid-row: 4;
             font-size: 30px;
             color: #2e2626;
             text-wrap: pretty;
             hanging-punctuation: first last;
             display: flex;
             align-items: flex-start;
-            padding-bottom: 10px;
         }
         
         .aspect-ratio-buttons {
-            grid-row: 4;
+            grid-row: 5;
             display: flex;
             width: 100%;
-            height: 50%;
+            height: 50px;
             gap: 24px;
-            margin-top: -12.5%;
+            margin-top: 10px;
         }
         
         .aspect-button {
@@ -150,7 +183,6 @@
             transition: all 0.2s ease;
             text-wrap: pretty;
             hanging-punctuation: first last;
-            padding: 0;
         }
         
         .aspect-button:hover {
@@ -162,28 +194,47 @@
             color: #ffffff;
         }
         
+        .spacing-row-2 {
+            grid-row: 6;
+        }
+        
         .divider2 {
-            grid-row: 5;
+            grid-row: 7;
             height: 4px;
             background-color: #2e2626;
             align-self: center;
+            width: 100%;
         }
         
         .type-pun-section {
-            grid-row: 6;
+            grid-row: 8;
             font-size: 30px;
             text-wrap: pretty;
             hanging-punctuation: first last;
             display: flex;
             align-items: flex-start;
-            padding-bottom: 10px;
+        }
+        
+        .character-counter {
+            font-size: 14px;
+            color: #999;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .character-counter.warning {
+            color: #ff6b6b;
+        }
+        
+        .character-counter.max {
+            color: #ff0000;
         }
         
         .type-input-section {
-            grid-row: 7;
-            display: flex;
+            grid-row: 9;
             width: 100%;
             height: 100%;
+            margin-top: 10px;
         }
         
         .type-input {
@@ -201,11 +252,12 @@
             outline: none;
             text-wrap: pretty;
             hanging-punctuation: first last;
-            margin-top: -6.25%;
+            text-transform: uppercase;
         }
         
         .type-input::placeholder {
             color: #999;
+            text-transform: none;
         }
         
         .type-input:focus {
@@ -214,12 +266,11 @@
         }
         
         .button-section {
-            grid-row: 8;
+            grid-row: 11;
             display: flex;
             width: 100%;
-            height: 100%;
+            height: 50px;
             gap: 24px;
-            align-items: flex-end;
         }
         
         .randomise-button {
@@ -229,14 +280,15 @@
             font-family: 'New Spirit', sans-serif;
             font-size: 20px;
             color: #2e2626;
-            padding: 15px 0;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
             text-wrap: pretty;
             hanging-punctuation: first last;
             flex: 4;
-            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .randomise-button:hover {
@@ -253,11 +305,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
             flex: 1;
-            min-height: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
         }
         
         .download-button:hover {
@@ -272,33 +322,134 @@
             width: 26px;
             height: 26px;
             object-fit: fill;
-            padding: 15px 0;
-            box-sizing: content-box;
         }
         
         .bottom-margin {
-            grid-row: 9;
+            grid-row: 10;
         }
         
-        .spacing-row {
-            grid-row: 10;
+        .spacing-row-3 {
+            grid-row: 12;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-height: 800px) {
+            .controls {
+                padding: 30px;
+            }
+            
+            .title-section {
+                font-size: 40px;
+            }
+            
+            .canvas-section, .type-pun-section {
+                font-size: 24px;
+            }
+            
+            .aspect-button, .type-input, .randomise-button {
+                font-size: 16px;
+            }
+            
+            .aspect-ratio-buttons, .button-section {
+                height: 40px;
+            }
+            
+            .aspect-button, .randomise-button {
+                border-radius: 10px;
+            }
+            
+            .type-input {
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            .text-content {
+                font-size: 65px;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .controls {
+                padding: 20px;
+            }
+            
+            .title-section {
+                font-size: 32px;
+            }
+            
+            .canvas-section, .type-pun-section {
+                font-size: 20px;
+            }
+            
+            .aspect-button, .type-input, .randomise-button {
+                font-size: 14px;
+            }
+            
+            .aspect-ratio-buttons, .button-section {
+                height: 35px;
+            }
+            
+            .aspect-button, .randomise-button {
+                border-radius: 8px;
+            }
+            
+            .type-input {
+                padding: 8px;
+                font-size: 14px;
+            }
+            
+            .text-content {
+                font-size: 50px;
+            }
+        }
+        
+        @media (max-width: 1400px) {
+            .text-content {
+                font-size: 70px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .text-content {
+                font-size: 60px;
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .text-content {
+                font-size: 55px;
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .text-content {
+                font-size: 50px;
+            }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="side-footer">
-            Side Footer
+            <!-- Side footer text removed as requested -->
         </div>
         <div class="gallery" id="gallery">
-            <!-- Canvas wrapper will be inserted here -->
+            <div class="canvas-wrapper" id="canvas-wrapper">
+                <div class="p5-container" id="p5-container"></div>
+                <div class="text-overlay" id="text-overlay">
+                    <div class="text-content" id="text-content"></div>
+                </div>
+            </div>
         </div>
         <div class="controls">
             <div class="row-grid">
                 <div class="title-section">
                     Seed Freedom <br>Poster Generator
                 </div>
+                
+                <div class="spacing-row-1"></div>
                 
                 <div class="divider"></div>
                 
@@ -314,15 +465,20 @@
                     <div class="aspect-button" data-aspect="1:1">1:1</div>
                 </div>
                 
+                <div class="spacing-row-2"></div>
+                
                 <div class="divider2"></div>
                 
                 <div class="type-pun-section">
-                    Add Your Pun 
+                    Add Your Pun
                 </div>
                 
                 <div class="type-input-section">
-                    <textarea class="type-input" placeholder="Type your pun here..." id="pun-input"></textarea>
+                    <textarea class="type-input" placeholder="Type your pun here..." id="pun-input" maxlength="30"></textarea>
+                    <div class="character-counter" id="character-counter">0/30</div>
                 </div>
+                
+                <div class="bottom-margin"></div>
                 
                 <div class="button-section">
                     <div class="randomise-button" id="randomise-btn">Randomise</div>
@@ -331,21 +487,23 @@
                     </div>
                 </div>
                 
-                <div class="bottom-margin"></div>
-                
-                <div class="spacing-row"></div>
+                <div class="spacing-row-3"></div>
             </div>
         </div>
     </div>
     
     <script>
-        // Global variables
-        let currentSketch = null;
-        let currentAspectRatio = '3:2';
-        let currentP5Instance = null;
+        // Rectangle size ratios for container sizing
+        const sizeRatios = [
+            {width: 69.44, height: 46.875},    // 16:9 (900x506.25)
+            {width: 39.06, height: 83.33},     // 9:16 (506.25x900)
+            {width: 55.56, height: 83.33},     // 4:5 (720x900)
+            {width: 69.44, height: 55.56},     // 3:2 (900x600)
+            {width: 69.44, height: 83.33}      // 1:1 (900x900)
+        ];
         
-        // Aspect ratio dimensions mapping
-        const aspectDimensions = {
+        // Canvas dimensions for each sketch (fixed sizes from the second file)
+        const canvasDimensions = {
             '16:9': { width: 900, height: 506.25 },
             '9:16': { width: 506.25, height: 900 },
             '4:5': { width: 720, height: 900 },
@@ -353,7 +511,133 @@
             '1:1': { width: 900, height: 900 }
         };
         
-        // Function to load and initialize a p5.js sketch
+        let currentSizeIndex = 3; // Start with 3:2 (index 3)
+        let currentP5Instance = null;
+        let currentSketch = null;
+        const MAX_CHARACTERS = 30;
+        
+        const canvasWrapper = document.getElementById('canvas-wrapper');
+        const p5Container = document.getElementById('p5-container');
+        const gallery = document.getElementById('gallery');
+        const textContent = document.getElementById('text-content');
+        const punInput = document.getElementById('pun-input');
+        const characterCounter = document.getElementById('character-counter');
+        
+        // Initialize download counter from session storage
+        let downloadCounter = sessionStorage.getItem('sfc_download_counter') || 0;
+        
+        // Initialize with 3:2 size
+        updateCanvasWrapperSize();
+        
+        function updateCanvasWrapperSize() {
+            const galleryRect = gallery.getBoundingClientRect();
+            const galleryWidth = galleryRect.width;
+            const galleryHeight = galleryRect.height;
+            
+            const ratio = sizeRatios[currentSizeIndex];
+            
+            // Calculate size based on percentage of gallery dimensions
+            const width = Math.min(
+                galleryWidth * (ratio.width / 100),
+                galleryWidth * 0.9
+            );
+            
+            const height = Math.min(
+                galleryHeight * (ratio.height / 100),
+                galleryHeight * 0.9
+            );
+            
+            canvasWrapper.style.width = `${width}px`;
+            canvasWrapper.style.height = `${height}px`;
+            
+            // Update text overlay size
+            updateTextOverlay();
+        }
+        
+        function updateActiveButton() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.aspect-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Map current size index to aspect ratio
+            const aspectMap = ['16:9', '9:16', '4:5', '3:2', '1:1'];
+            const currentAspect = aspectMap[currentSizeIndex];
+            
+            // Add active class to corresponding button
+            const activeButton = document.querySelector(`[data-aspect="${currentAspect}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+        
+        function updateTextOverlay() {
+            let text = punInput.value.trim().toUpperCase();
+            
+            // Add full stop if text exists and doesn't already end with punctuation
+            if (text.length > 0) {
+                const lastChar = text.charAt(text.length - 1);
+                if (!['.', '!', '?', ':', ';'].includes(lastChar)) {
+                    text += '.';
+                }
+            }
+            
+            textContent.textContent = text;
+            
+            // Update character counter (count without the added full stop)
+            const rawText = punInput.value.trim().toUpperCase();
+            const charCount = rawText.length;
+            characterCounter.textContent = `${charCount}/${MAX_CHARACTERS}`;
+            
+            // Update counter color based on character count
+            characterCounter.classList.remove('warning', 'max');
+            if (charCount > MAX_CHARACTERS * 0.8) {
+                characterCounter.classList.add('warning');
+            }
+            if (charCount >= MAX_CHARACTERS) {
+                characterCounter.classList.add('max');
+            }
+        }
+        
+        function downloadCanvas() {
+            // Get text from input (without the auto-added period for filename)
+            const inputText = punInput.value.trim().toUpperCase();
+            const filenameText = inputText.replace(/[^A-Z0-9]/g, '_').substring(0, 20) || 'NO_TEXT';
+            
+            // Increment download counter and save to session storage
+            downloadCounter++;
+            sessionStorage.setItem('sfc_download_counter', downloadCounter);
+            
+            // Create filename
+            const filename = `${filenameText}_SFC_Poster_${downloadCounter}.jpg`;
+            
+            // Use html2canvas to capture the canvas wrapper
+            html2canvas(canvasWrapper, {
+                backgroundColor: '#ffffff',
+                scale: 2, // Higher resolution for better quality
+                useCORS: true,
+                logging: false,
+                allowTaint: true
+            }).then(canvas => {
+                // Convert canvas to data URL
+                const imageData = canvas.toDataURL('image/jpeg', 0.95);
+                
+                // Create download link
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = imageData;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log(`Downloaded: ${filename}`);
+            }).catch(error => {
+                console.error('Error capturing canvas:', error);
+                alert('Error downloading image. Please try again.');
+            });
+        }
+        
+        // Load p5.js sketch based on aspect ratio
         function loadSketch(aspectRatio) {
             // Remove existing sketch if any
             if (currentSketch) {
@@ -362,65 +646,34 @@
                 currentP5Instance = null;
             }
             
-            // Clear gallery container
-            const gallery = document.getElementById('gallery');
-            gallery.innerHTML = '';
+            // Clear p5 container
+            p5Container.innerHTML = '';
             
-            // Get the dimensions for this aspect ratio
-            const dimensions = aspectDimensions[aspectRatio];
-            
-            // Create a fixed wrapper for the canvas with exact dimensions
-            const canvasWrapper = document.createElement('div');
-            canvasWrapper.className = 'canvas-wrapper';
-            canvasWrapper.style.width = dimensions.width + 'px';
-            canvasWrapper.style.height = dimensions.height + 'px';
-            
-            // Create a container for p5 canvas inside the wrapper
-            const p5Container = document.createElement('div');
-            p5Container.className = 'p5-container';
-            p5Container.style.width = '100%';
-            p5Container.style.height = '100%';
-            canvasWrapper.appendChild(p5Container);
-            gallery.appendChild(canvasWrapper);
-            
-            // Load appropriate script based on aspect ratio
+            // Load appropriate sketch based on aspect ratio
             switch(aspectRatio) {
                 case '3:2':
-                    load3x2Sketch(p5Container, dimensions.width, dimensions.height);
+                    load3x2Sketch();
                     break;
                 case '1:1':
-                    load1x1Sketch(p5Container, dimensions.width, dimensions.height);
+                    load1x1Sketch();
                     break;
                 case '4:5':
-                    load4x5Sketch(p5Container, dimensions.width, dimensions.height);
+                    load4x5Sketch();
                     break;
                 case '9:16':
-                    load9x16Sketch(p5Container, dimensions.width, dimensions.height);
+                    load9x16Sketch();
                     break;
                 case '16:9':
-                    load16x9Sketch(p5Container, dimensions.width, dimensions.height);
+                    load16x9Sketch();
                     break;
                 default:
-                    showPlaceholder(p5Container, aspectRatio);
+                    // Default to 3:2
+                    load3x2Sketch();
             }
         }
         
-        // Function to show placeholder
-        function showPlaceholder(container, aspectRatio) {
-            const placeholder = document.createElement('div');
-            placeholder.style.color = 'white';
-            placeholder.style.fontSize = '24px';
-            placeholder.style.textAlign = 'center';
-            placeholder.style.position = 'absolute';
-            placeholder.style.top = '50%';
-            placeholder.style.left = '50%';
-            placeholder.style.transform = 'translate(-50%, -50%)';
-            placeholder.innerHTML = `${aspectRatio}<br>coming soon!`;
-            container.appendChild(placeholder);
-        }
-        
-        // 3:2 sketch
-        function load3x2Sketch(container, width, height) {
+        // 3:2 sketch - EXACTLY AS PROVIDED
+        function load3x2Sketch() {
             const sketch = function(p) {
                 p.images = [];
                 p.selectedIndices = [];
@@ -456,9 +709,19 @@
                 };
                 
                 p.setup = function() {
-                    // Use the exact width and height passed to the function
-                    const canvas = p.createCanvas(width, height);
-                    canvas.parent(container);
+                    // Use fixed dimensions from the second file
+                    const canvas = p.createCanvas(900, 600);
+                    // Create a wrapper div for the canvas
+                    const canvasElement = canvas.elt;
+                    const canvasDiv = document.createElement('div');
+                    canvasDiv.className = 'p5-canvas';
+                    canvasDiv.style.width = '100%';
+                    canvasDiv.style.height = '100%';
+                    canvasDiv.style.display = 'flex';
+                    canvasDiv.style.justifyContent = 'center';
+                    canvasDiv.style.alignItems = 'center';
+                    canvasDiv.appendChild(canvasElement);
+                    p5Container.appendChild(canvasDiv);
                     
                     // Select 4 random unique images
                     p.selectedIndices = [];
@@ -631,8 +894,8 @@
             currentP5Instance = currentSketch;
         }
         
-        // 1:1 sketch
-        function load1x1Sketch(container, width, height) {
+        // 1:1 sketch - EXACTLY AS PROVIDED
+        function load1x1Sketch() {
             const sketch = function(p) {
                 p.images = [];
                 p.selectedIndices = [];
@@ -668,8 +931,19 @@
                 };
                 
                 p.setup = function() {
-                    const canvas = p.createCanvas(width, height);
-                    canvas.parent(container);
+                    // Use fixed dimensions from the second file
+                    const canvas = p.createCanvas(900, 900);
+                    // Create a wrapper div for the canvas
+                    const canvasElement = canvas.elt;
+                    const canvasDiv = document.createElement('div');
+                    canvasDiv.className = 'p5-canvas';
+                    canvasDiv.style.width = '100%';
+                    canvasDiv.style.height = '100%';
+                    canvasDiv.style.display = 'flex';
+                    canvasDiv.style.justifyContent = 'center';
+                    canvasDiv.style.alignItems = 'center';
+                    canvasDiv.appendChild(canvasElement);
+                    p5Container.appendChild(canvasDiv);
                     
                     p.selectedIndices = [];
                     while (p.selectedIndices.length < 4) {
@@ -694,7 +968,7 @@
                     const topHeight = p.height * 0.32;
                     const bottomHeight = p.height * 0.68;
                     const leftWidth = p.width * 0.32;
-                    const rightWidth = p.width * 0.68;
+                    const rightWidth = p.width * 0.72;
                     
                     for (let row = 0; row < p.dotRows; row++) {
                         for (let col = 0; col < p.dotCols; col++) {
@@ -825,8 +1099,8 @@
             currentP5Instance = currentSketch;
         }
         
-        // 4:5 sketch
-        function load4x5Sketch(container, width, height) {
+        // 4:5 sketch - EXACTLY AS PROVIDED
+        function load4x5Sketch() {
             const sketch = function(p) {
                 p.images = [];
                 p.selectedIndices = [];
@@ -861,8 +1135,19 @@
                 };
                 
                 p.setup = function() {
-                    const canvas = p.createCanvas(width, height);
-                    canvas.parent(container);
+                    // Use fixed dimensions from the second file
+                    const canvas = p.createCanvas(720, 900);
+                    // Create a wrapper div for the canvas
+                    const canvasElement = canvas.elt;
+                    const canvasDiv = document.createElement('div');
+                    canvasDiv.className = 'p5-canvas';
+                    canvasDiv.style.width = '100%';
+                    canvasDiv.style.height = '100%';
+                    canvasDiv.style.display = 'flex';
+                    canvasDiv.style.justifyContent = 'center';
+                    canvasDiv.style.alignItems = 'center';
+                    canvasDiv.appendChild(canvasElement);
+                    p5Container.appendChild(canvasDiv);
                     
                     p.selectedIndices = [];
                     while (p.selectedIndices.length < 4) {
@@ -1018,8 +1303,8 @@
             currentP5Instance = currentSketch;
         }
         
-        // 9:16 sketch
-        function load9x16Sketch(container, width, height) {
+        // 9:16 sketch - EXACTLY AS PROVIDED
+        function load9x16Sketch() {
             const sketch = function(p) {
                 p.images = [];
                 p.selectedIndices = [];
@@ -1054,8 +1339,19 @@
                 };
                 
                 p.setup = function() {
-                    const canvas = p.createCanvas(width, height);
-                    canvas.parent(container);
+                    // Use fixed dimensions from the second file
+                    const canvas = p.createCanvas(506.25, 900);
+                    // Create a wrapper div for the canvas
+                    const canvasElement = canvas.elt;
+                    const canvasDiv = document.createElement('div');
+                    canvasDiv.className = 'p5-canvas';
+                    canvasDiv.style.width = '100%';
+                    canvasDiv.style.height = '100%';
+                    canvasDiv.style.display = 'flex';
+                    canvasDiv.style.justifyContent = 'center';
+                    canvasDiv.style.alignItems = 'center';
+                    canvasDiv.appendChild(canvasElement);
+                    p5Container.appendChild(canvasDiv);
                     
                     p.selectedIndices = [];
                     while (p.selectedIndices.length < 4) {
@@ -1211,8 +1507,8 @@
             currentP5Instance = currentSketch;
         }
         
-        // 16:9 sketch
-        function load16x9Sketch(container, width, height) {
+        // 16:9 sketch - EXACTLY AS PROVIDED
+        function load16x9Sketch() {
             const sketch = function(p) {
                 p.images = [];
                 p.selectedIndices = [];
@@ -1247,8 +1543,19 @@
                 };
                 
                 p.setup = function() {
-                    const canvas = p.createCanvas(width, height);
-                    canvas.parent(container);
+                    // Use fixed dimensions from the second file
+                    const canvas = p.createCanvas(900, 506.25);
+                    // Create a wrapper div for the canvas
+                    const canvasElement = canvas.elt;
+                    const canvasDiv = document.createElement('div');
+                    canvasDiv.className = 'p5-canvas';
+                    canvasDiv.style.width = '100%';
+                    canvasDiv.style.height = '100%';
+                    canvasDiv.style.display = 'flex';
+                    canvasDiv.style.justifyContent = 'center';
+                    canvasDiv.style.alignItems = 'center';
+                    canvasDiv.appendChild(canvasElement);
+                    p5Container.appendChild(canvasDiv);
                     
                     p.selectedIndices = [];
                     while (p.selectedIndices.length < 4) {
@@ -1404,50 +1711,68 @@
             currentP5Instance = currentSketch;
         }
         
-        // Event Listeners
+        // Handle window resize
+        window.addEventListener('resize', updateCanvasWrapperSize);
+        
+        // Control panel event listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Aspect ratio button click handlers
             document.querySelectorAll('.aspect-button').forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.aspect-button').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Get the aspect ratio from data attribute
+                    // Get the aspect ratio and update canvas wrapper size
                     const aspectRatio = this.getAttribute('data-aspect');
-                    currentAspectRatio = aspectRatio;
+                    const aspectMap = {
+                        '16:9': 0,
+                        '9:16': 1,
+                        '4:5': 2,
+                        '3:2': 3,
+                        '1:1': 4
+                    };
                     
-                    // Load the appropriate sketch
-                    loadSketch(aspectRatio);
+                    if (aspectMap.hasOwnProperty(aspectRatio)) {
+                        currentSizeIndex = aspectMap[aspectRatio];
+                        updateCanvasWrapperSize();
+                        updateActiveButton();
+                        
+                        // Load the appropriate sketch
+                        loadSketch(aspectRatio);
+                    }
                 });
             });
             
-            // Randomise button click handler
+            // Initialize with 3:2 active
+            updateActiveButton();
+            
+            // Load initial sketch (3:2)
+            loadSketch('3:2');
+            
+            // Pun input event listener - auto-uppercase and enforce character limit
+            punInput.addEventListener('input', function() {
+                // Convert to uppercase
+                this.value = this.value.toUpperCase();
+                
+                // Limit characters
+                if (this.value.length > MAX_CHARACTERS) {
+                    this.value = this.value.substring(0, MAX_CHARACTERS);
+                }
+                updateTextOverlay();
+            });
+            
+            // Randomise button event listener
             document.getElementById('randomise-btn').addEventListener('click', function() {
+                // If we have a p5 instance, call its randomise function
                 if (currentP5Instance && currentP5Instance.randomise) {
                     currentP5Instance.randomise();
                 }
             });
             
-            // Download button click handler (placeholder)
+            // Download button event listener
             document.getElementById('download-btn').addEventListener('click', function() {
-                // TODO: Implement download functionality
-                console.log('Download clicked');
-                alert('Download functionality coming soon!');
+                downloadCanvas();
             });
             
-            // Pun input handler
-            document.getElementById('pun-input').addEventListener('input', function() {
-                // TODO: Implement pun text overlay
-                console.log('Pun updated:', this.value);
-            });
-            
-            // Set 3:2 as default active and load it
-            document.getElementById('btn-3x2').classList.add('active');
-            loadSketch('3:2');
+            // Initialize character counter
+            updateTextOverlay();
         });
     </script>
 </body>
